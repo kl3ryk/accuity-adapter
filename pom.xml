@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.itm.galperin</groupId>
+	<artifactId>accuity-adapter</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>accuity-adapter</name>
+	<description>Accuity adapter for GBS</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+		<maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+		<checkstyle.version>8.0</checkstyle.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>${checkstyle.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>checkstyle</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<configLocation>checkstyle.xml</configLocation>
+							<violationSeverity>warning</violationSeverity>
+							<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<scm>
+		<connection>scm:git:itmtfs@itmtfs.visualstudio.com:22/ITM.SD.Galperin/_git/accuity-adapter</connection>
+		<developerConnection>scm:git:itmtfs@itmtfs.visualstudio.com:22/ITM.SD.Galperin/_git/accuity-adapter</developerConnection>
+		<url>scm:git:itmtfs@itmtfs.visualstudio.com:22/ITM.SD.Galperin/_git/accuity-adapter</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<repositories>
+		<repository>
+			<id>itm-public</id>
+			<url>https://repo.itmagination.com/repository/maven-public/</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>itm-public</id>
+			<url>https://repo.itmagination.com/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>itm-public</id>
+			<url>https://repo.itmagination.com/repository/maven-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
