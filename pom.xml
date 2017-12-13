@@ -4,7 +4,7 @@
 
 	<groupId>com.itm.galperin</groupId>
 	<artifactId>accuity-adapter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>accuity-adapter</name>
 	<description>Accuity adapter for GBS</description>
@@ -150,7 +150,7 @@
 		<connection>scm:git:itmtfs@itmtfs.visualstudio.com:22/ITM.SD.Galperin/_git/accuity-adapter</connection>
 		<developerConnection>scm:git:itmtfs@itmtfs.visualstudio.com:22/ITM.SD.Galperin/_git/accuity-adapter</developerConnection>
 		<url>scm:git:itmtfs@itmtfs.visualstudio.com:22/ITM.SD.Galperin/_git/accuity-adapter</url>
-		<tag>HEAD</tag>
+		<tag>v0.0.1</tag>
 	</scm>
 
 	<repositories>
