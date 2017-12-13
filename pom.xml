@@ -21,7 +21,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
 		<checkstyle.version>8.0</checkstyle.version>
+		<cxf.version>3.1.12</cxf.version>
+		<generated.source.root>${project.build.directory}/generated/cxf</generated.source.root>
 	</properties>
 
 	<dependencies>
@@ -30,9 +33,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-security</artifactId>
+			<version>${cxf.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -49,6 +57,27 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -72,6 +101,45 @@
 							<violationSeverity>warning</violationSeverity>
 							<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sourceRoot>${generated.source.root}</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/wsdl/FilterService.wsdl</wsdl>
+									<wsdlLocation>classpath:wsdl/FilterService.wsdl</wsdlLocation>
+									<extraargs>
+										<extraarg>-validate</extraarg>
+										<extraarg>-client</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>org.accuity.FilterService</extraarg>
+									</extraargs>
+								</wsdlOption>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/wsdl/ImportScreeningService.wsdl</wsdl>
+									<wsdlLocation>classpath:wsdl/ImportScreeningService.wsdl</wsdlLocation>
+									<extraargs>
+										<extraarg>-validate</extraarg>
+										<extraarg>-client</extraarg>
+										<extraarg>-p</extraarg>
+										<extraarg>org.accuity.ScreeningService</extraarg>
+									</extraargs>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
