@@ -1,4 +1,4 @@
-package com.itm.galperin.accuity.adapter.model;
+package com.itm.galperin.accuity.adapter.model.transaction;
 
 public class AccuityTransactionDto {
 

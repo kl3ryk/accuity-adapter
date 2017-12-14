@@ -2,11 +2,11 @@ package com.itm.galperin.accuity.adapter.service;
 
 import com.itm.galperin.accuity.adapter.mapper.AccuityTransactionMapper;
 import com.itm.galperin.accuity.adapter.model.AccuityScreeningStatus;
-import com.itm.galperin.accuity.adapter.model.AccuityTransactionDto;
 import com.itm.galperin.accuity.adapter.model.Category;
 import com.itm.galperin.accuity.adapter.model.Field;
-import com.itm.galperin.accuity.adapter.model.TransactionScreeningRequest;
-import com.itm.galperin.accuity.adapter.model.TransactionScreeningResponse;
+import com.itm.galperin.accuity.adapter.model.transaction.AccuityTransactionDto;
+import com.itm.galperin.accuity.adapter.model.transaction.TransactionScreeningRequest;
+import com.itm.galperin.accuity.adapter.model.transaction.TransactionScreeningResponse;
 import java.util.Arrays;
 import java.util.List;
 import org.accuity.FilterService.FilterServicePortType;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccuityTransactionServiceImpl implements AccuityTransactionService {
 
-    @Value("${accuity.api.client.profile.id}")
+    @Value("${accuity.api.filterService.client.profile.id}")
     private String clientProfileId;
 
     private final FilterServicePortType filterServicePortType;

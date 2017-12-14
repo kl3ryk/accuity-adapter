@@ -1,4 +1,6 @@
-package com.itm.galperin.accuity.adapter.model;
+package com.itm.galperin.accuity.adapter.model.transaction;
+
+import com.itm.galperin.accuity.adapter.model.Field;
 
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;

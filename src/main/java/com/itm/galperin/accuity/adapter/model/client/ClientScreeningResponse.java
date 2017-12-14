@@ -1,5 +1,6 @@
-package com.itm.galperin.accuity.adapter.model;
+package com.itm.galperin.accuity.adapter.model.client;
 
+import com.itm.galperin.accuity.adapter.model.Match;
 import com.itm.galperin.accuity.adapter.model.adapter.AccuityBooleanAdapter;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -11,7 +12,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement(name = "Results")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TransactionScreeningResponse {
+public class ClientScreeningResponse {
 
     @XmlJavaTypeAdapter(AccuityBooleanAdapter.class)
     @XmlAttribute(name = "IsHit")
