@@ -1,0 +1,131 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://webservice.facfilter.accuity.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://webservice.facfilter.accuity.com">
+  <wsdl:documentation>FilterService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.facfilter.accuity.com">
+      <xs:element name="filterDoc">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestXML" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="filterDocResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getListVersions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="requestXML" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getListVersionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getListVersionsRequest">
+    <wsdl:part name="parameters" element="ns:getListVersions"/>
+  </wsdl:message>
+  <wsdl:message name="getListVersionsResponse">
+    <wsdl:part name="parameters" element="ns:getListVersionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="filterDocRequest">
+    <wsdl:part name="parameters" element="ns:filterDoc"/>
+  </wsdl:message>
+  <wsdl:message name="filterDocResponse">
+    <wsdl:part name="parameters" element="ns:filterDocResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="FilterServicePortType">
+    <wsdl:operation name="getListVersions">
+      <wsdl:input message="ns:getListVersionsRequest" wsaw:Action="urn:getListVersions"/>
+      <wsdl:output message="ns:getListVersionsResponse" wsaw:Action="urn:getListVersionsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="filterDoc">
+      <wsdl:input message="ns:filterDocRequest" wsaw:Action="urn:filterDoc"/>
+      <wsdl:output message="ns:filterDocResponse" wsaw:Action="urn:filterDocResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FilterServiceSoap11Binding" type="ns:FilterServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getListVersions">
+      <soap:operation soapAction="urn:getListVersions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filterDoc">
+      <soap:operation soapAction="urn:filterDoc" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FilterServiceSoap12Binding" type="ns:FilterServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getListVersions">
+      <soap12:operation soapAction="urn:getListVersions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filterDoc">
+      <soap12:operation soapAction="urn:filterDoc" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FilterServiceHttpBinding" type="ns:FilterServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getListVersions">
+      <http:operation location="FilterService/getListVersions"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filterDoc">
+      <http:operation location="FilterService/filterDoc"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FilterService">
+    <wsdl:port name="FilterServiceHttpSoap11Endpoint" binding="ns:FilterServiceSoap11Binding">
+      <soap:address location="https://uat.compliance-link.com/ComplianceLinkWS/services/FilterService.FilterServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="FilterServiceHttpSoap12Endpoint" binding="ns:FilterServiceSoap12Binding">
+      <soap12:address location="https://uat.compliance-link.com/ComplianceLinkWS/services/FilterService.FilterServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="FilterServiceHttpEndpoint" binding="ns:FilterServiceHttpBinding">
+      <http:address location="https://uat.compliance-link.com/ComplianceLinkWS/services/FilterService.FilterServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

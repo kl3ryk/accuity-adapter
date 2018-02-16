@@ -1,0 +1,78 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://asm.webservice.autoscreeningmgr.accuity.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ImportScreeningServiceImplService" targetNamespace="http://asm.webservice.autoscreeningmgr.accuity.com/">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://asm.webservice.autoscreeningmgr.accuity.com/" elementFormDefault="unqualified" targetNamespace="http://asm.webservice.autoscreeningmgr.accuity.com/" version="1.0">
+      <xs:element name="getListVersions" type="tns:getListVersions"/>
+      <xs:element name="getListVersionsResponse" type="tns:getListVersionsResponse"/>
+      <xs:element name="importScreening" type="tns:importScreening"/>
+      <xs:element name="importScreeningResponse" type="tns:importScreeningResponse"/>
+      <xs:complexType name="getListVersions">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="requestXML" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListVersionsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="importScreening">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="requestXML" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="importScreeningResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getListVersions">
+    <wsdl:part element="tns:getListVersions" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="importScreeningResponse">
+    <wsdl:part element="tns:importScreeningResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListVersionsResponse">
+    <wsdl:part element="tns:getListVersionsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="importScreening">
+    <wsdl:part element="tns:importScreening" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ImportScreeningService">
+    <wsdl:operation name="getListVersions">
+      <wsdl:input message="tns:getListVersions" name="getListVersions"></wsdl:input>
+      <wsdl:output message="tns:getListVersionsResponse" name="getListVersionsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="importScreening">
+      <wsdl:input message="tns:importScreening" name="importScreening"></wsdl:input>
+      <wsdl:output message="tns:importScreeningResponse" name="importScreeningResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ImportScreeningServiceImplServiceSoapBinding" type="tns:ImportScreeningService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListVersions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListVersions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListVersionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="importScreening">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="importScreening">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="importScreeningResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImportScreeningServiceImplService">
+    <wsdl:port binding="tns:ImportScreeningServiceImplServiceSoapBinding" name="ImportScreeningServicePort">
+      <soap:address location="https://uat.compliance-link.com/ASMWS/services/ImportScreeningService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
